@@ -1,0 +1,346 @@
+@import 'reset' ;
+@import 'responsive' ;
+
+@mixin set-font($mobile :0.8rem , $tablet : 0.9rem){
+    @include mobile-view(){
+        font-size: $mobile  !important;
+    }
+    @include tablet-view(){
+        font-size: $tablet !important;
+    }
+}
+
+body{
+    @include set-font() ;
+    
+    //all h1 and p elements default font size
+    h6,h2,h3,h5,h4,h1{
+         font-size: 0.8rem !important;
+         @include set-font( ) 
+    }
+    p,a.btn{
+        font-size: 1rem !important;
+        @include set-font( )
+    }
+    //------------------- //
+
+    //sidebar styles
+
+    div.sidebar{
+        background: rgb(3, 209, 3) !important;
+        color: rgb(241, 236, 236) !important;
+        height: 100vh;
+        position: relative;
+         box-shadow: 2px 0 2px rgb(1, 182, 1);
+        @include mobile-view(){
+            height: 50vh;
+            border-radius: 0 0 50px 50px !important;
+        }
+
+        h1{
+            font-size: 1.8rem !important;
+            font-family: monospace;
+            @include set-font(0.9rem, 1.1rem)
+        }
+
+        h6.subject{
+            font-size: 1.2rem !important;
+            @include set-font(0.8rem,1rem )
+        }
+
+        div.wrapper{
+            height: 100% !important;
+        // display item in flex in mobile view.
+            @include mobile-view(){
+                display: flex;
+                justify-content: space-around;
+            }
+            div.completed{
+                div.progress{
+                    width: 150px;
+                    height: 150px;
+                    opacity: 0.8;
+
+                    @include mobile-view(){
+                        width: 100px;
+                        height: 100px;
+                    }
+
+                }
+                h6{
+                    font-size: 0.8rem !important;
+                    @include set-font(0.5rem,0.7rem ) ;
+                    font-family: sans-serif;
+                    font-weight: 700;
+                    opacity: 1;
+                    color: rgba(255,255,255,1) !important;
+                }
+            }
+
+            div.timer{
+                div.progress{
+                    width: 150px;
+                    height: 150px;
+                    opacity: 0.8;
+
+                    @include mobile-view(){
+                        width: 100px;
+                        height: 100px;
+                    }
+
+                    i.fa-clock{
+                        font-size: 1.8rem !important;
+                        @include set-font( ) ;
+                        color: rgba(255,255,255,1) !important;
+                        opacity: 1 !important;
+                        transform: translateY(-15px);
+                    }
+                    p{
+                        opacity: 1 !important;
+                        font-weight: 600;
+                        color: rgba(255,255,255,1);
+                    }
+
+                }
+            }
+        }
+        // visible on desktop only.
+        a.btn{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+}
+
+//homepage style
+ section.homepage{
+     h1{
+         color: rgb(3, 209, 3);
+         font-size: 1.5rem !important;
+         @include set-font( 1rem , ) ;
+         font-weight: 900;
+         text-align: center;
+         
+         @include mobile-view(){
+             color: rgba(255,255,255,1);
+             font-weight: 600;
+             transform: translateY(-50px);
+         }
+     }
+    div.col-6{
+        @include mobile-view(){
+            transform: translateY(-10px);
+        }
+         a.Card{
+            width: 300px;
+            height: 300px;
+            display: block;
+            border: 1px solid rgb(3, 209, 3);
+            &:hover{
+                text-decoration: none;
+            }
+
+            @include mobile-view(){
+                width: 150px;
+                height: 150px;
+            }
+
+            @include tablet-view(){
+                width: 200px;
+                height: 200px;
+            }
+
+             img{
+                width: 100%;
+                height: 250px;
+
+                @include mobile-view(){
+                    height: 120px;
+                }
+
+                @include tablet-view(){
+                     height: 150px;
+                }
+            }
+            p{  
+                font-weight: 500;
+                color: rgb(1, 163, 1);
+                @include set-font(0.6rem, )
+            }
+         }
+    }
+ }
+//homepage end
+
+//question and answer board
+div.q-and-a-board{
+   
+    div.question-board{
+    
+        font-size: 1rem !important;
+        @include set-font(0.7rem, ) ;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+        width: 70%;
+        height: 150px;
+        color: rgb(3, 128, 3);
+    
+        @include mobile-view(){
+            width: 90%;
+            transform: translateY(-90%);
+            height: 120px;
+            letter-spacing: normal;
+            background: rgba(255,255,255,1);
+        }
+        @include tablet-view(){
+            width: 90%;
+        }
+    
+        p{
+            text-align: center ;
+        }
+        
+        //score board component style
+        div.score-board{
+            img{
+                width: 180px ;
+                max-height: 150px - 2px ;
+                @include mobile-view(){
+                    width: 120px;
+                }
+                @include tablet-view(){
+                    width: 150px;
+                }
+            }
+
+            h6{
+                font-size: 1.3rem !important;
+                @include set-font(0.9rem, 1.1rem);
+                letter-spacing: normal;
+                font-weight: 600 ;   
+
+                @include mobile-view(){
+                    padding-left: 2rem ;
+                }             
+            }
+            li{
+                font-size: 0.8rem;
+                font-style: oblique;
+                @include mobile-view(){
+                    padding-left: 2rem ;
+                }
+            }
+            big{
+                font-size: 0.9rem !important ;
+                @include set-font(0.7rem, );
+                font-weight: 600 ;
+            }
+        } 
+    }
+
+    div.options-board{
+
+         @extend div.question-board ;
+        label{
+            font-size: 0.8rem !important;
+            @include set-font(0.7rem, ) ;
+            color: rgb(3, 116, 3);       
+            width: 90%; 
+
+            input[type="radio"]{
+                opacity: 0.5;
+            }
+        }    
+    }
+     div.menu{
+        a{
+             position: relative;
+            text-decoration: none;
+            color: rgb(241, 236, 236);
+            &:hover,&:active,&:focus,&:visited{
+                text-decoration: none;
+                color: rgb(241, 236, 236);
+            }
+        }
+       div{
+            span{
+                width: 50px ;
+                height: 50px ;                      
+            }
+            span.home{
+                background: rgb(31, 20, 20);
+            }
+            span.replay{
+                background: rgb(3, 141, 88);
+            }
+            span.share{
+                background: rgb(82, 2, 173);
+            }
+            span.leader-board{
+                background: rgb(138, 2, 77);
+            }
+       }
+        b{
+            font-size: 0.9rem !important;
+            font-weight: 500;
+            @include set-font( 00.7rem , 0.8rem )
+        } 
+     }    
+
+    button.next-btn{
+        width: 250px;
+        background: rgb(2, 179, 2) !important;
+        font-size: 1rem;
+        margin-top: 6rem ;
+        @include set-font() ;
+        
+        @include mobile-view(){
+            width: 200px;
+            margin-top: 0;
+        }
+    }
+}
+//question and answer board end
+
+//start page 
+  div.start-page{
+      color: rgba(0,0,0,0.8) !important;
+      h1{
+          font-size: 1rem !important;
+          @include set-font(0.8rem, ) ;
+          font-weight: 600;
+
+          @include mobile-view(){          
+            margin-top: 2rem !important;
+            }
+      }
+       ul{
+           width: 50%;
+           margin: auto;
+          
+           @include mobile-view(){
+                  width: 90%;
+                  margin-top: 2rem !important;
+           }
+
+           li{
+               font-size: 0.8rem !important;  
+               @include set-font(0.7rem,0.8rem ) ;
+               border: none !important;
+
+               button{
+                font-size: 1rem !important;  
+                @include set-font(0.7rem,0.8rem ) ;
+                letter-spacing: 0.8px;
+                font-weight: 500;
+                width: 170px;
+                background: rgb(3, 209, 3) !important;
+               }
+           }
+       }  
+        
+  }
+//start page end
